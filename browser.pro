@@ -18,6 +18,3 @@ SOURCES += main.cpp\
 
 HEADERS  += widget.h \
     settings.h
-
-FORMS    += widget.ui \
-    settings.ui
