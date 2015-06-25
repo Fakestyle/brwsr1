@@ -1,12 +1,22 @@
 #include "widget.h"
-#include "ui_widget.h"
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent)
 {
-    reloadBtn = new QPushButton("Перезапустить");
+    createForm();
+    connectSignalWithSlots();
+}
+
+Widget::~Widget()
+{
+}
+
+void Widget::createForm()
+{
+    reloadBtn = new QPushButton("Обновить");
     openBtn = new QPushButton("Перейти");
     urlLink = new QLineEdit();
+    urlLink->setText("google.com");
 
     web = new QWidget();
     webView = new QWebView(this);
@@ -24,23 +34,14 @@ Widget::Widget(QWidget *parent) :
     setLayout(mainLt);
 }
 
-Widget::~Widget()
+void Widget::connectSignalWithSlots()
 {
+    connect(reloadBtn, SIGNAL(clicked(bool)), webView, SLOT(reload()));
+    connect(openBtn, SIGNAL(clicked(bool)), this, SLOT(openPage()));
+    connect(urlLink, SIGNAL(returnPressed()), this, SLOT(openPage()));
 }
 
-void Widget::on_UrlGo_clicked()
+void Widget::openPage()
 {
-}
-
-void Widget::on_Settings_clicked()
-{
-
-}
-
-void Widget::on_pushButton_clicked()
-{
-}
-
-void Widget::on_WEB_loadProgress(int progress)
-{
+    webView->setUrl(urlLink->text());
 }
