@@ -3,7 +3,16 @@
 Widget::Widget(QWidget *parent) :
     QWidget(parent)
 {
-    reloadBtn = new QPushButton("Перезапустить");
+    createForm();
+}
+
+Widget::~Widget()
+{
+}
+
+void Widget::createForm()
+{
+    reloadBtn = new QPushButton("Обновить");
     openBtn = new QPushButton("Перейти");
     urlLink = new QLineEdit();
 
@@ -21,10 +30,6 @@ Widget::Widget(QWidget *parent) :
     mainLt->addWidget(webView);
 
     setLayout(mainLt);
-}
-
-Widget::~Widget()
-{
 }
 
 void Widget::on_UrlGo_clicked()

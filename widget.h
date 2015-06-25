@@ -24,6 +24,7 @@ private:
     QLineEdit *urlLink;
     QHBoxLayout *childLt;
     QVBoxLayout *mainLt;
+    void createForm();
 
 private slots:
     void on_UrlGo_clicked();
