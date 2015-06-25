@@ -25,14 +25,11 @@ private:
     QHBoxLayout *childLt;
     QVBoxLayout *mainLt;
 
+    void createForm();
+    void connectSignalWithSlots();
+
 private slots:
-    void on_UrlGo_clicked();
-
-    void on_Settings_clicked();
-
-    void on_pushButton_clicked();
-
-    void on_WEB_loadProgress(int progress);
+    void openPage();
 };
 
 #endif // WIDGET_H
